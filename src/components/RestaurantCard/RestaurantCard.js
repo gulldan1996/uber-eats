@@ -11,6 +11,8 @@ export const RestaurantCard = (props) => {
     // uuid,
   } = props;
 
+  // console.log(props)
+
   return (
     <div className="restaurant-card">
       <img src={imageUrl} alt={title} className="restaurant-card__img" />

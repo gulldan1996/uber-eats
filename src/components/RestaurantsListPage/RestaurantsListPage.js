@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Switch, Route } from 'react-router-dom';
 import { RestaurantCard } from '../RestaurantCard/RestaurantCard';
 import './RestaurantsListPage.scss';
 import { Loader } from '../Loader/Loader';
 import { Error } from '../Error/Error';
+import { Restaurant } from '../Restaurant/Restaurant';
 
 const DEFAULT_ETA_RANGE = '20 - 30 min';
 
@@ -30,28 +32,35 @@ export class RestaurantsListPage extends Component {
     }
 
     return (
-      <div className="restaurants-list">
-        {restaurantsData.map((restaurant) => {
-          const {
-            uuid,
-            title,
-            categories,
-            heroImageUrl,
-            etaRange,
-          } = restaurant;
+      <Switch>
+        <div className="restaurants-list">
+          {restaurantsData.map((restaurant) => {
+            const {
+              uuid,
+              title,
+              categories,
+              heroImageUrl,
+              etaRange,
+            } = restaurant;
 
-          return (
-            <RestaurantCard
-              key={uuid}
-              uuid={uuid}
-              title={title}
-              categories={categories}
-              imageUrl={heroImageUrl}
-              etaRange={etaRange ? etaRange.text : DEFAULT_ETA_RANGE}
-            />
-          );
-        })}
-      </div>
+            return (
+              <Route path="/RestaurantList" key={uuid}>
+                <RestaurantCard
+                  key={uuid}
+                  uuid={uuid}
+                  title={title}
+                  categories={categories}
+                  imageUrl={heroImageUrl}
+                  etaRange={etaRange ? etaRange.text : DEFAULT_ETA_RANGE}
+                />
+              </Route>
+            );
+          })}
+          <Route path="/Restaurant">
+            <Restaurant />
+          </Route>
+        </div>
+      </Switch>
     );
   }
 }

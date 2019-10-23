@@ -1,16 +1,20 @@
-@import "../../style/extends.scss";
+@import "../../style/utils";
 
 .control {
-  $border-color: #e0e0e0;
-  @extend %flex-row-center;
+  &__input-wrapper {
+    @extend %flex-row-center;
 
-  padding: 11px 16px;
+    padding: 11px 16px;
 
-  border: 1px solid $border-color;
-  transition: border-color 300ms;
+    border: 1px solid $color-gray;
+    transition: border-color 300ms;
+    @media (max-width: $break-point-phone) {
+     max-width: 260px;
+    }
+  }
 
   &--focused {
-    border-color: darken($border-color, 20);
+    border-color: darken($color-gray, 20);
   }
 
   &__icon {
@@ -23,6 +27,22 @@
   &__input {
     line-height: 24px;
     min-height: 24px;
+
+    &--time {
+      max-width: 75px;
+    }
+
+    &__small {
+      @media (max-width: $break-point-table-lg) {
+        max-width: 75px;
+      }
+    }
+  }
+
+  &__label {
+    font-size: 16px;
+    color: #626262;
+    margin-bottom: 8px;
   }
 
   & + & {
