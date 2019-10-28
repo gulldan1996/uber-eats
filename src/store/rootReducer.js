@@ -2,13 +2,15 @@ import { ACTION_TYPE } from './actions';
 
 const initialState = {
   restaurantsData: null,
+  restaurantInfo: null,
   isLoading: false,
   error: null,
   search: '',
+  uuid: null,
 };
 
+console.log(initialState);
 export function rootReducer(state = initialState, action) {
-  // console.log('object', state);
   switch (action.type) {
     case ACTION_TYPE.SAVE_RESTOURANTS: {
       const { payload } = action;
@@ -17,6 +19,15 @@ export function rootReducer(state = initialState, action) {
         ...state,
         error: null,
         restaurantsData: payload,
+      };
+    }
+
+    case ACTION_TYPE.SAVE_RESTAURANT_INFO: {
+      const { payload } = action;
+
+      return {
+        ...state,
+        restaurantInfo: payload,
       };
     }
 
@@ -44,12 +55,12 @@ export function rootReducer(state = initialState, action) {
       };
     }
 
-    case ACTION_TYPE.SEARCH_RESTAURANTS: {
+    case ACTION_TYPE.GIVE_TO_UUID: {
       const { payload } = action;
 
       return {
         ...state,
-        search: payload,
+        uuid: payload,
       };
     }
 

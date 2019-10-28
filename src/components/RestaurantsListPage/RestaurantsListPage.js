@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Switch, Route } from 'react-router-dom';
 import { RestaurantCard } from '../RestaurantCard/RestaurantCard';
 import './RestaurantsListPage.scss';
 import { Loader } from '../Loader/Loader';
 import { Error } from '../Error/Error';
-import { Restaurant } from '../Restaurant/Restaurant';
 
 const DEFAULT_ETA_RANGE = '20 - 30 min';
 
@@ -21,6 +19,7 @@ export class RestaurantsListPage extends Component {
       restaurantsData,
       error,
       isLoading,
+      giveToUuid,
     } = this.props;
 
     if (isLoading) {
@@ -32,35 +31,29 @@ export class RestaurantsListPage extends Component {
     }
 
     return (
-      <Switch>
-        <div className="restaurants-list">
-          {restaurantsData.map((restaurant) => {
-            const {
-              uuid,
-              title,
-              categories,
-              heroImageUrl,
-              etaRange,
-            } = restaurant;
+      <div className="restaurants-list">
+        {restaurantsData.map((restaurant) => {
+          const {
+            uuid,
+            title,
+            categories,
+            heroImageUrl,
+            etaRange,
+          } = restaurant;
 
-            return (
-              <Route path="/RestaurantList" key={uuid}>
-                <RestaurantCard
-                  key={uuid}
-                  uuid={uuid}
-                  title={title}
-                  categories={categories}
-                  imageUrl={heroImageUrl}
-                  etaRange={etaRange ? etaRange.text : DEFAULT_ETA_RANGE}
-                />
-              </Route>
-            );
-          })}
-          <Route path="/Restaurant">
-            <Restaurant />
-          </Route>
-        </div>
-      </Switch>
+          return (
+            <RestaurantCard
+              key={uuid}
+              uuid={uuid}
+              giveToUuid={giveToUuid}
+              title={title}
+              categories={categories}
+              imageUrl={heroImageUrl}
+              etaRange={etaRange ? etaRange.text : DEFAULT_ETA_RANGE}
+            />
+          );
+        })}
+      </div>
     );
   }
 }
@@ -70,10 +63,12 @@ RestaurantsListPage.propTypes = {
   loadRestaurants: PropTypes.func.isRequired,
   error: PropTypes.string,
   isLoading: PropTypes.bool,
+  giveToUuid: PropTypes.func,
 };
 
 RestaurantsListPage.defaultProps = {
   restaurantsData: [],
   error: null,
   isLoading: false,
+  giveToUuid: null,
 };

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { RestaurantsListPage } from './RestaurantsListPage';
-import { loadRestaurants } from '../../store/actions';
+import { loadRestaurants, giveToUuid } from '../../store/actions';
 import {
   selectRestaurantsList,
   selectRestaurantsListError,
@@ -17,6 +17,7 @@ function mapState2Props(state) {
 
 const mapDispatch2Props = {
   loadRestaurants,
+  giveToUuid,
 };
 
 const Enhanced = connect(

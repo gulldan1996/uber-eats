@@ -51,7 +51,7 @@ export class Header extends Component {
       <header className="header">
         <div className="content">
           <div className="header__inner">
-            <Link to="/RestaurantList">
+            <Link to="/">
               <img
                 src="./images/logo.svg"
                 alt="Uber eats"
@@ -109,13 +109,12 @@ export class Header extends Component {
               </button>
             </div>
 
-            <Link
-              to="/Restaurant"
+            <a
               className="header__link"
-              href="/sign-in"
+              href="/"
             >
               Sigh In
-            </Link>
+            </a>
           </div>
         </div>
         {(isMobileSearchVisible || isMobileDeliveryInfoVisible) && (
