@@ -111,7 +111,7 @@ export class Header extends Component {
 
             <a
               className="header__link"
-              href="/"
+              href="#/"
             >
               Sigh In
             </a>

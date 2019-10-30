@@ -2,12 +2,12 @@ import React from 'react';
 import './RestaurantPage.scss';
 import PropTypes from 'prop-types';
 import { Loader } from '../Loader';
-// import { RestaurantPageSection } from '../RestaurantPageSection';
+import { RestaurantPageMain } from '../RestaurantPageMain';
 
 export class RestaurantPage extends React.Component {
-  // state = {
-  //   activeSection: null,
-  // }
+  state = {
+    activeSection: null,
+  }
 
   componentDidMount() {
     const { loadRestaurantInfo, match } = this.props;
@@ -17,11 +17,11 @@ export class RestaurantPage extends React.Component {
     window.scrollTo(0, 0);
   }
 
-  // handleNavLinkClick = (id) => {
-  //   this.setState({
-  //     activeSection: id,
-  //   });
-  // }
+  handleNavLinkClick = (id) => {
+    this.setState({
+      activeSection: id,
+    });
+  }
 
   render() {
     const {
@@ -34,7 +34,7 @@ export class RestaurantPage extends React.Component {
       restaurantCuisineList,
     } = this.props;
 
-    // const { activeSection } = this.state;
+    const { activeSection } = this.state;
 
     if (isLoading) {
       return <Loader />;
@@ -83,17 +83,17 @@ export class RestaurantPage extends React.Component {
               ))}
             </ul>
           </nav>
-          {/* <div className="restaurant-page__menu">
+          <div className="restaurant-page__menu">
             {
               pageFoodSections.map(section => (
-                <RestaurantPageSection
+                <RestaurantPageMain
                   section={section}
                   activeSection={activeSection}
                   key={section.uuid}
                 />
               ))
             }
-          </div> */}
+          </div>
         </div>
       </section>
     );
