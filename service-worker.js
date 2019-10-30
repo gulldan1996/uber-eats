@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/uber-eats/precache-manifest.98df59e830065b0502d38de294ce36f6.js"
+  "/uber-eats/precache-manifest.ea84202b823fe3902cd787120ea3ebef.js"
 );
 
 self.addEventListener('message', (event) => {
