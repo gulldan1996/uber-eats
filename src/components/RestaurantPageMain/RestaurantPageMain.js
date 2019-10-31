@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { ItemCard } from '../ItemCard';
+import { ItemCard } from '../ItemCard';
 import './RestaurantPageMain.scss';
 
 export class RestaurantPageMain extends React.Component {
@@ -28,7 +28,7 @@ export class RestaurantPageMain extends React.Component {
   render() {
     const {
       section,
-      // sectionItems,
+      sectionItems,
     } = this.props;
 
     return (
@@ -43,7 +43,7 @@ export class RestaurantPageMain extends React.Component {
           {section
             .title.toLowerCase()}
         </h2>
-        {/* <div className="restaurant-page__menu-container">
+        <div className="restaurant-page__menu-container">
           {section.itemUuids.map((item) => {
             const {
               title,
@@ -64,7 +64,7 @@ export class RestaurantPageMain extends React.Component {
               />
             );
           })}
-        </div> */}
+        </div>
       </div>
     );
   }

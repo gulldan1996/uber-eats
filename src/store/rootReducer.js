@@ -9,7 +9,6 @@ const initialState = {
   uuid: null,
 };
 
-console.log(initialState);
 export function rootReducer(state = initialState, action) {
   switch (action.type) {
     case ACTION_TYPE.SAVE_RESTOURANTS: {
